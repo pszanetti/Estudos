@@ -1,0 +1,37 @@
+[project]
+title = Hierarquia
+dependencies#0 = https://github.com/whiteboxdev/library-defold-rendy/archive/main.zip
+
+[bootstrap]
+main_collection = /main/main.collectionc
+
+[input]
+game_binding = /input/game.input_bindingc
+use_accelerometer = 0
+
+[display]
+width = 320
+height = 240
+vsync = 0
+high_dpi = 1
+
+[script]
+shared_state = 1
+
+[windows]
+app_icon = /assets/app_icons/appicon.ico
+
+[osx]
+app_icon = /assets/app_icons/appicon.icns
+
+[android]
+input_method = HiddenInputField
+
+[physics]
+gravity_y = -1000.0
+scale = 0.01
+velocity_threshold = 100.0
+
+[html5]
+scale_mode = stretch
+

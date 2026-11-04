@@ -1,0 +1,57 @@
+# --- Godot Engine ---
+.import/
+.godot/
+export.cfg
+*.pck
+
+# --- Defold Engine ---
+/.editor_settings
+/.internal
+/build
+bundle/
+.externalToolBuilders
+.lock-wscript
+*.pyc
+.project
+.cproject
+builtins
+
+# --- Compilação e Binários (C / C++) ---
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+*.exe
+*.out
+*.app
+bin/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+
+# --- Caches de Editores & LSPs (Neovim / VS Code) ---
+.clangd/
+.cache/
+.luarc.json
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# --- Engines e Frameworks (LÖVE) ---
+*.love
+
+# --- Logs e Arquivos Temporários ---
+*.log
+*~
+
+# --- Sistema Operacional (Linux / Geral) ---
+.directory
+.DS_Store
+Thumbs.db
+# --- Sistema Operacional (Linux) ---
+*~
+.directory

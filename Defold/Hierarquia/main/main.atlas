@@ -1,0 +1,43 @@
+images {
+  image: "/assets/images/background.png"
+}
+images {
+  image: "/builtins/graphics/particle_blob.png"
+}
+images {
+  image: "/assets/images/mountains.png"
+}
+images {
+  image: "/assets/images/graveyard.png"
+}
+images {
+  image: "/assets/images/statue.png"
+}
+images {
+  image: "/assets/images/stone-1.png"
+}
+images {
+  image: "/assets/images/stone-2.png"
+}
+images {
+  image: "/assets/images/stone-3.png"
+}
+images {
+  image: "/assets/images/stone-4.png"
+}
+images {
+  image: "/assets/images/tree-1.png"
+}
+images {
+  image: "/assets/images/tree-2.png"
+}
+images {
+  image: "/assets/images/tree-3.png"
+}
+images {
+  image: "/assets/images/bush-large.png"
+}
+images {
+  image: "/assets/images/bush-small.png"
+}
+extrude_borders: 2

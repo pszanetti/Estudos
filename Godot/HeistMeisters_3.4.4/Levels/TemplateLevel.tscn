@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Tiles/Tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=2]
+
+[node name="TemplateLevel" type="Node2D"]
+position = Vector2( 1, 0 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+collision_layer = 2
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 196602, 1, 0, 196603, 1, 2, 196604, 1, 2, 196605, 1, 2, 196606, 1, 2, 196607, 1, 2, 131072, 1, 1, 262138, 1, 65538, 262139, 2, 0, 262140, 2, 0, 262141, 2, 0, 262142, 2, 0, 262143, 2, 0, 196608, 1, 65538, 327674, 1, 65538, 327675, 2, 0, 327676, 2, 0, 327677, 2, 2, 327678, 2, 2, 327679, 2, 0, 262144, 1, 65538, 393210, 1, 65538, 393211, 2, 0, 393212, 2, 0, 393213, 2, 0, 393214, 2, 0, 393215, 2, 0, 327680, 1, 65538, 458746, 1, 65536, 458747, 1, 2, 458748, 1, 2, 458749, 1, 2, 458750, 1, 2, 458751, 1, 2, 393216, 1, 65537 )
+
+[node name="Destinations" type="Node" parent="."]
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -223, 291 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2( 1, -1 )
+
+[node name="Cameras" type="Node" parent="."]
+
+[node name="Guards" type="Node" parent="."]

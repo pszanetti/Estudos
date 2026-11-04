@@ -1,0 +1,78 @@
+name: "main"
+instances {
+  id: "camera"
+  prototype: "/rendy/rendy.go"
+  component_properties {
+    id: "script"
+    properties {
+      id: "active"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "resize_mode_expand"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "resize_mode_stretch"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "viewport_width"
+      value: "960.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "viewport_height"
+      value: "640.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "resolution_width"
+      value: "320.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "resolution_height"
+      value: "200.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "z_min"
+      value: "-10.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "z_max"
+      value: "10.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+}
+collection_instances {
+  id: "gameplay"
+  collection: "/screens/gameplay/gameplay.collection"
+}
+scale_along_z: 0
+embedded_instances {
+  id: "player"
+  data: "components {\n"
+  "  id: \"main\"\n"
+  "  component: \"/main/main.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"collectionfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/entities/player/player.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"sound\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/assets/sounds/soundtrack.ogg\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}

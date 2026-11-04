@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Interface/VisionMode.tscn" type="PackedScene" id=3]
+
+[node name="TemplateLevel" type="Node2D"]
+position = Vector2( 1, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -223, 291 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="VisionMode" parent="." instance=ExtResource( 3 )]
+
+[node name="Cameras" type="Node" parent="."]
+
+[node name="Guards" type="Node" parent="."]
+
+[node name="Doors" type="Node" parent="."]
+
+[node name="LockedDoors" type="Node" parent="."]

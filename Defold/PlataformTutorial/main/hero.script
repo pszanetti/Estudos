@@ -1,0 +1,184 @@
+-- Definindo CONSTANTES para o script inteiro
+local DIRECTION_RIGHT = 1
+local DIRECTION_LEFT = -1
+
+local BASE_VELOCITY = 500
+local GRAVITY = 1000
+
+local JUMP_TAKEOFF = 600
+
+function init(self)
+	msg.post("#", "acquire_input_focus")
+	-- Ativando a Camera
+	msg.post("@render", "use_camera_projection")
+	msg.post("operator#camera", "acquire_camera_focus")
+	
+
+	-- Inicializa variáveis de estado
+	self.velocity = vmath.vector3(0, 0, 0)
+	self.ground_contact = false
+	self.correction = vmath.vector3(0, 0, 0)
+	-- self.direction = DIRECTION_RIGHT -- Direção inicial padrão
+	-- self.animation = nil
+	self.previous_ground_contact = false
+end
+
+-- Função para definir a velocidade horizontal
+function walk(self)
+	self.velocity.x = BASE_VELOCITY * self.direction
+end
+
+function play_animation(self, new_animation)
+	if self.animation ~= new_animation then
+		sprite.play_flipbook("#sprite", new_animation)
+		self.animation = new_animation
+	end
+end
+
+-- Função para definir a animação
+function animate(self)
+	if self.ground_contact then
+		if self.velocity.x == 0 then
+			play_animation(self, "idle")
+		else
+			play_animation(self, "run")
+		end
+	else
+		play_animation(self, "jump")
+	end
+	-- print(self.velocity.x/500)
+	-- msg.post("paralax#script", "set_parallax_dir", { dir = self.velocity })
+	
+end
+
+-- Definindo o lado que o personagem olha
+function flip(direction)
+	sprite.set_hflip("#sprite", direction < 0)
+end
+
+local function clamp(v, min, max)
+	if v < min then return min
+	elseif v > max then return max
+	else return v end
+end
+
+
+function handle_level_collisions(self, normal, distance)
+--[[Esta função resolve um problema clássico da física de jogos: quando o personagem "entra" um pouco dentro 
+da parede ou do chão, precisamos empurrá-lo para fora instantaneamente e zerar a velocidade na direção certa.
+]]-- Ajustando a penetração das colisões
+	
+	-- distance = distance * vmath.length(normal) -> o comprimento deve ser sempre 1
+--[[ Ajusta a profundidade real que o personagem invadiu
+ o obstáculo multiplicando pelo comprimento do vetor normal.]]--
+	
+	if distance > 0 then
+		
+		-- Usamos vmath.dot para obter a projeção escalar corretamente
+		local projection = vmath.dot(self.correction, normal)
+--[[Se o personagem estiver espremido em um canto (batendo na parede e no chão ao mesmo tempo), 
+a função calcula quanto ajuste já foi feito (self.correction) para evitar 
+que o motor empurre o personagem duas vezes na mesma direção e cause um "tremelique".]]--
+		
+		local compensation_distance = distance - projection
+		-- Calcula o quanto ainda falta empurrar o personagem para fora da colisão.
+		
+		if compensation_distance > 0 then
+			local compensation = normal * compensation_distance
+			go.set_position(go.get_position() + compensation)
+			-- Pega a posição atual do objeto e teleporta ele instantaneamente para fora do obstáculo.
+			self.correction = self.correction + compensation
+		end
+	end
+
+	-- Verificando as paredes (colisão horizontal)
+	if math.abs(normal.x) > 0 then
+		self.velocity.x = 0
+	end
+
+	-- No Chão
+	if normal.y > 0 then
+		-- Emitindo particulas
+		if not self.previous_ground_contact then
+			particlefx.play("#dust")
+			sound.play("#land")
+		end
+		self.ground_contact = true
+		self.velocity.y = 0
+	end
+
+	-- No Teto
+	if normal.y < 0 then
+		self.velocity.y = 0
+	end
+end
+
+--[[
+No Defold, objetos conversam entre si e com o motor através de mensagens. 
+Quando o motor de física detecta que dois colisores se sobrepuseram, 
+ele envia uma mensagem para a caixa de correio do script.
+]]--
+function on_message(self, message_id, message, sender)
+	--[[
+ É uma função padrão do Defold. Sempre que o objeto recebe qualquer mensagem, 
+essa função é acionada automaticamente.self: Referência ao estado atual do 
+script.message_id: O "título" ou ID da mensagem (ex: se foi uma colisão, um som terminou, etc.). 
+O Defold usa hash() para otimizar strings.message: Uma tabela contendo os dados do evento 
+(como ponto de contato, normal, distância).sender: Quem enviou a mensagem.
+if message_id == hash("contact_point_response"): O motor de física dispara essa mensagem específica 
+(contact point response) a cada frame em que há uma sobreposição de colisores. Se o player estiver encostado no chão, o motor dispara isso repetidamente.and message.other_group == hash("level"): Filtra para garantir que só vamos processar colisões se o outro objeto pertencer ao grupo físico chamado "level" (o nosso TileMap do cenário), ignorando outros objetos (como moedas ou inimigos, se houver).   handle_level_collisions(...): Se passou no filtro, chama nossa função personalizada passando o vetor normal e a distance da colisão.   
+]]--
+	if message_id == hash("contact_point_response") and message.other_group == hash("level") then
+		handle_level_collisions(self, message.normal, message.distance)
+	end
+end
+
+function fixed_update(self, dt)
+	-- Aplicando Gravidade
+	self.velocity.y = self.velocity.y - GRAVITY * dt
+	self.velocity.y = clamp(self.velocity.y, -2000, 2000)
+
+	if self.ground_contact then
+		self.velocity.y = 0
+	end
+	-- Emitirndo poeira -> dust
+	self.previous_ground_contact = self.ground_contact
+	-- Atualizando a posição do objeto de jogo
+	local position = go.get_position()
+	position = position + self.velocity * dt
+	go.set_position(position)
+
+	animate(self)
+
+	-- Reset de estados para o próximo frame de física
+	self.velocity.x = 0
+	self.ground_contact = false
+	self.correction = vmath.vector3(0, 0, 0)
+
+	msg.post("/paralax/control#paralax", "set_player_pos", { x = go.get_position().x })
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("right") or action_id == hash("left") then
+		-- Define se é 1 (direita) ou -1 (esquerda)
+		local dir_value = (action_id == hash("right")) and 1 or -1
+
+		-- Se o jogador soltou a tecla, a direção vai para 0 (parado)
+		if action.released then
+			dir_value = 0
+		end
+
+		self.direction = (action_id == hash("right")) and DIRECTION_RIGHT or DIRECTION_LEFT
+		walk(self)
+		flip(self.direction)
+
+		-- ENVIA A DIREÇÃO PARA O PARALLAX AQUI:
+		msg.post("/paralax/control#paralax", "set_parallax_dir", { dir = dir_value })
+
+	elseif action_id == hash("jump") and action.pressed and self.ground_contact then
+		self.velocity.y = JUMP_TAKEOFF
+		self.ground_contact = false
+		particlefx.play("#dust")
+		sound.play("#jump")
+	end
+end
