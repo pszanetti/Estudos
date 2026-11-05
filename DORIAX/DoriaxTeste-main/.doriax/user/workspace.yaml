@@ -1,0 +1,69 @@
+# Editor state for this checkout only. Not committed; deleting it
+# costs nothing but the layout it holds.
+selectedScene: 1
+tabs:
+  - type: scene
+    filepath: main.scene
+terrainEditor:
+  brushMode: Raise
+  brushShape: Circle
+  brushFalloff: Smooth
+  brushSize: 4
+  brushStrength: 0.3
+  brushRotation: 0
+  brushMaskPath: ""
+  flattenHeight: 0.5
+  terraceSteps: 8
+  noiseSize: 4
+  heightMapResolution: 512
+  blendMapResolution: 512
+  densityMapResolution: 512
+  normalizeBlendPaint: true
+  heightMapStartAtMiddle: true
+  flattenPickOnStroke: true
+  paintUseMask: false
+  paintMinSlope: 0
+  paintMaxSlope: 90
+  paintMinHeight: 0
+  paintMaxHeight: 1
+  placeAssetPath: ""
+  placeInstanced: true
+  placeSpacing: 2
+  placeMinScale: 1
+  placeMaxScale: 1
+  placeRotationJitter: 1
+  placeAlignToNormal: 0
+simulateTouch: false
+scenes:
+  main.scene:
+    showAllJoints: false
+    showAllBones: false
+    showAllBodies: false
+    hideCameraView: false
+    showFullFrustum: false
+    hideLightIcons: false
+    hideSoundIcons: false
+    hideContainerGuides: false
+    showOrigin: true
+    showGrid3D: true
+    hideSelectionOutline: false
+    disableFaceCulling: false
+    disableFog: false
+    disableUnderwater: false
+    showGrid2D: false
+    gridSpacing2D: 50
+    gridSpacing3D: 1
+    snapToGrid: false
+    snapTile: false
+    snapRotation: false
+    rotationSnapDegrees: 15
+    editorCamera:
+      type: camera_ortho
+      target: [-50, -50, 0]
+      up: [0, 1, 0]
+      yfov: 0.75
+      aspect: 1.769131
+      nearClip: -10000
+      farClip: 10000
+      position: [-50, -50, 1]
+      zoom: 1

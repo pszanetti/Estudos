@@ -53,8 +53,6 @@ func move() -> void:
 func make_path() -> void:
 	randomize()
 	var next_destination = possible_destinations[randi() % possible_destinations.size()]
-	# Obtém o RID do mapa de navegação padrão do mundo 2D atual
-	# Usa a nova instrução nativa do servidor recomendada pelo aviso
 	path = navigation.get_simple_path(global_position, next_destination.global_position, false)
 #	print(path)
 
