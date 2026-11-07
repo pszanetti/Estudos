@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/TemplateLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/NPC/Camera.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Levels/Navigation2D.gd" type="Script" id=4]
 [ext_resource path="res://Levels/Destinations.gd" type="Script" id=5]
 [ext_resource path="res://Characters/NPC/GuardRonda.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/Destinations2.gd" type="Script" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1812, 648, 2338, 990, 1043, 1000, 1651, 648, 2348.65, 226.509, 1812, 502, 1779.62, 219.918, 1650, 501, 1044.63, 307.144, 1133.85, 216.922, -313, -448, 313, -448, 315, 120, 117.347, 116.587, 78.273, 114.376, 238.283, 1015.22, -309.783, 1015.22, -299.703, 459.595, 82.0527, 467.154, 179, 482, 242, 482, 175, 361, 116.403, 203.424, 427, 485, 935, 482, 935, 1000, 341.597, 998.841, 427, 358, 342.857, 362.581, 395, 204, 1651, -431, 1655, 104, 1136, 105, 1039, -432, 1039, 216, 955, -444, 959, 116, 435.433, 117.531, 395, -444, 433.545, 211.919, 1742.22, -426.335, 2346, -428, 2346, 95, 1776.62, 101.552, 1739.16, 215.423, 927.46, 307.144, 919, 351, -313, 112 )
@@ -27,24 +28,36 @@ position = Vector2( 232, -293 )
 position = Vector2( 636, 7 )
 
 [node name="Position3" type="Position2D" parent="Destinations" index="2"]
-position = Vector2( 1404, 3 )
+position = Vector2( 1404, 5 )
 
 [node name="Position4" type="Position2D" parent="Destinations" index="3"]
-position = Vector2( 2155, -4 )
+position = Vector2( 273, 270 )
 
 [node name="Position5" type="Position2D" parent="Destinations" index="4"]
-position = Vector2( 2026, 723 )
+position = Vector2( -148, 556 )
 
 [node name="Position6" type="Position2D" parent="Destinations" index="5"]
-position = Vector2( 1370, 751 )
+position = Vector2( 770, 613 )
 
-[node name="Position7" type="Position2D" parent="Destinations" index="6"]
-position = Vector2( 770, 878 )
+[node name="Destinations2" parent="." index="2"]
+script = ExtResource( 7 )
 
-[node name="Position8" type="Position2D" parent="Destinations" index="7"]
-position = Vector2( -170, 571 )
+[node name="Position1" type="Position2D" parent="Destinations2" index="0"]
+position = Vector2( 1238, 291 )
 
-[node name="Navigation2D" parent="." index="2"]
+[node name="Position2" type="Position2D" parent="Destinations2" index="1"]
+position = Vector2( 1763, 291 )
+
+[node name="Position3" type="Position2D" parent="Destinations2" index="2"]
+position = Vector2( 2254, -47 )
+
+[node name="Position4" type="Position2D" parent="Destinations2" index="3"]
+position = Vector2( 1238, 912 )
+
+[node name="Position5" type="Position2D" parent="Destinations2" index="4"]
+position = Vector2( 2190, 912 )
+
+[node name="Navigation2D" parent="." index="3"]
 script = ExtResource( 4 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D" index="0"]
@@ -53,7 +66,7 @@ navpoly = SubResource( 1 )
 [node name="Camera2D" parent="Player" index="4"]
 current = true
 
-[node name="CanvasModulate" parent="." index="4"]
+[node name="CanvasModulate" parent="." index="5"]
 position = Vector2( 23, -152 )
 
 [node name="Camera" parent="Cameras" index="0" instance=ExtResource( 2 )]
@@ -80,8 +93,8 @@ rotation = -3.14159
 position = Vector2( 2088, 1008 )
 rotation = -1.5708
 
-[node name="Guard0" parent="Guards" index="0" instance=ExtResource( 3 )]
-position = Vector2( -104, 816 )
-
-[node name="GuardaRonda" parent="Guards" index="1" instance=ExtResource( 6 )]
+[node name="GuardaRonda" parent="Guards" index="0" instance=ExtResource( 6 )]
 position = Vector2( -56, -202 )
+
+[node name="Guard" parent="Guards" index="1" instance=ExtResource( 3 )]
+position = Vector2( 1374, 491 )

@@ -3,6 +3,7 @@ extends Node
 var Player
 var navigation
 var destinations
+var destinations2
 
 
 # Called when the node enters the scene tree for the first time.

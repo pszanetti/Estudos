@@ -74,3 +74,4 @@ func make_path() -> void:
 	if path.size() == 0:
 		current_index = (current_index + 1) % possible_destinations.size()
 		make_path()
+
