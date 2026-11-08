@@ -76,29 +76,35 @@ custom_constants/separation = 10
 
 [node name="DisplayContainer" type="CenterContainer" parent="VBoxContainer"]
 margin_right = 180.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 180, 100 )
+margin_bottom = 90.0
+rect_min_size = Vector2( 180, 90 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/DisplayContainer"]
-margin_right = 180.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 180, 100 )
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 170.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 160, 80 )
 texture = ExtResource( 1 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
 [node name="Display" type="Label" parent="VBoxContainer/DisplayContainer/NinePatchRect"]
-margin_left = 40.0
-margin_top = 36.0
-margin_right = 140.0
-margin_bottom = 63.0
+margin_left = 32.0
+margin_top = 30.0
+margin_right = 132.0
+margin_bottom = 57.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Texto"
 valign = 3
 
 [node name="ButtonContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 110.0
+margin_top = 100.0
 margin_right = 180.0
-margin_bottom = 282.0
+margin_bottom = 272.0
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/ButtonContainer"]
 margin_left = 22.0

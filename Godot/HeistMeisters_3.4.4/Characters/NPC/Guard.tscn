@@ -9,6 +9,9 @@
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 4 )
+nav_stop_threshold = 5
+walk_speed = 0.5
+start_offset = 0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )

@@ -1,13 +1,13 @@
 extends "res://Characters/NPC/PlayerDetection.gd"
 
 onready var navigation = Global.navigation
-onready var avaliable_destinations = Global.destinations2
+onready var avaliable_destinations2 = Global.destinations2
 
 
 var motion: Vector2
-var possible_destinations = []
+var possible_destinations2 = []
 var path = []
-var destination: Vector2
+var destination2: Vector2
 
 export var nav_stop_threshold = 5
 export var walk_speed = 0.5
@@ -16,63 +16,66 @@ export var start_offset: int = 0  # Permite escolher no Inspector onde este guar
 var current_index: int = 0
 
 func _ready() -> void:
-	possible_destinations = avaliable_destinations.get_children()
+	navigation = Global.navigation
+	possible_destinations2 = avaliable_destinations2.get_children()
 
-	if possible_destinations.size() > 0:
-# Define o ponto de partida na ordem com base no offset do Inspector
-		current_index = start_offset % possible_destinations.size()
+	if possible_destinations2.size() > 0:
+		current_index = start_offset % possible_destinations2.size()
 
+	# espera o NavigationServer sincronizar o mapa
+	yield(get_tree(), "physics_frame")
+	yield(get_tree(), "physics_frame")
 	make_path()
 
-func _process(_delta: float) -> void:
-	if path.size() > 0:
-		navigate()
-
 func navigate() -> void:
-	var distance_to_destination = position.distance_to(path[0])    
-	destination = path[0]
-	if distance_to_destination > nav_stop_threshold:
+	destination2 = path[0]
+	if global_position.distance_to(destination2) > nav_stop_threshold:
 		move()
 	else:
 		update_path()
 
+func move() -> void:
+	var target_direction = (destination2 - global_position).normalized()
+	rotation = lerp_angle(rotation, target_direction.angle(), 0.1)
+	motion = target_direction * MAX_SPEED * walk_speed
+	move_and_slide(motion)
+
+func make_path(tentativas: int = 0) -> void:
+	if possible_destinations2.size() == 0 or tentativas >= possible_destinations2.size():
+		push_warning("Guarda sem caminho válido: navmesh vazio ou desconectado")
+		return
+
+	var next_destination = possible_destinations2[current_index]
+	path = navigation.get_simple_path(global_position, next_destination.global_position, false)
+
+	if path.size() == 0:
+		current_index = (current_index + 1) % possible_destinations2.size()
+		make_path(tentativas + 1)
+
+#func make_path() -> void:
+#	if possible_destinations.size() == 0:
+#		return
+#
+## Pega o destino da vez de forma SEQUENCIAL (em vez de usar randi())
+#	var next_destination = possible_destinations[current_index]
+#
+## Calcula o caminho usando a navegação do Global
+#	path = navigation.get_simple_path(global_position, next_destination.global_position, false)
+#
+## Segurança caso o path venha vazio por algum erro de mapa
+#	if path.size() == 0:
+#		current_index = (current_index + 1) % possible_destinations.size()
+#		make_path()
+
+
+func _process(_delta: float) -> void:
+	if path.size() > 0:
+		navigate()
 func update_path() -> void:
 # Se chegou ao final do caminho atual (chegou no Position2D)
 	if path.size() <= 1:
 # Avança para o próximo Position2D na ordem (0 -> 1 -> 2 -> 0...)
-		current_index = (current_index + 1) % possible_destinations.size()
+		current_index = (current_index + 1) % possible_destinations2.size()
 		make_path()
 	else:
 		path.remove(0)
-
-func move() -> void:
-# 1. Calcula o vetor de direção até o próximo ponto do caminho
-	var target_direction = (path[0] - global_position).normalized()
-# 2. Descobre qual é o ângulo (em radianos) que o NPC precisa olhar
-	var target_angle = target_direction.angle()    
-# 3. Interpola suavemente o ângulo atual da rotação para o ângulo de destino
-	rotation = lerp_angle(rotation, target_angle, 0.1)
-
-	motion = (destination - position).normalized() * MAX_SPEED * walk_speed
-
-#	if is_on_wall():
-## Se bateu na parede, força ir para o próximo destino da rota
-#		current_index = (current_index + 1) % possible_destinations.size()
-#		make_path()
-	move_and_slide(motion)
-
-func make_path() -> void:
-	if possible_destinations.size() == 0:
-		return
-
-# Pega o destino da vez de forma SEQUENCIAL (em vez de usar randi())
-	var next_destination = possible_destinations[current_index]
-
-# Calcula o caminho usando a navegação do Global
-	path = navigation.get_simple_path(global_position, next_destination.global_position, false)
-
-# Segurança caso o path venha vazio por algum erro de mapa
-	if path.size() == 0:
-		current_index = (current_index + 1) % possible_destinations.size()
-		make_path()
-

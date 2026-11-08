@@ -20,15 +20,17 @@ func _ready() -> void:
 	if possible_destinations.size() > 0:
 # Define o ponto de partida na ordem com base no offset do Inspector
 		current_index = start_offset % possible_destinations.size()
-
+	yield(get_tree(), "physics_frame")
+	yield(get_tree(), "physics_frame")
 	make_path()
+
 
 func _process(_delta: float) -> void:
 	if path.size() > 0:
 		navigate()
 
 func navigate() -> void:
-	var distance_to_destination = position.distance_to(path[0])    
+	var distance_to_destination = global_position.distance_to(path[0])    
 	destination = path[0]
 	if distance_to_destination > nav_stop_threshold:
 		move()

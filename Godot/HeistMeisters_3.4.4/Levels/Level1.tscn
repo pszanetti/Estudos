@@ -102,7 +102,7 @@ position = Vector2( -56, -202 )
 position = Vector2( 1374, 491 )
 
 [node name="Door" parent="Doors" index="0" instance=ExtResource( 8 )]
-position = Vector2( 425, 170 )
+position = Vector2( 417, 160 )
 
 [node name="LockedDoor" parent="Doors" index="1" instance=ExtResource( 9 )]
-position = Vector2( 97, 158 )
+position = Vector2( 97, 159 )

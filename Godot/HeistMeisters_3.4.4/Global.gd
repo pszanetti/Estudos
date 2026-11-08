@@ -1,9 +1,9 @@
 extends Node
 
-var Player
-var navigation
-var destinations
-var destinations2
+var Player: KinematicBody2D
+var navigation: Navigation2D
+var destinations: Node
+var destinations2: Node 
 
 
 # Called when the node enters the scene tree for the first time.
