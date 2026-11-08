@@ -63,13 +63,12 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBody"]
-visible = false
 shape = SubResource( 1 )
 disabled = true
 
 [node name="Torch" parent="CameraBody" instance=ExtResource( 1 )]
 position = Vector2( 13, 0 )
-offset = Vector2( 320, 0 )
+offset = Vector2( 320, -4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CameraBody"]
 autoplay = "CameraRotation"
