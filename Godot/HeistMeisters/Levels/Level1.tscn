@@ -65,11 +65,8 @@ script = ExtResource( 4 )
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D" index="0"]
 navpoly = SubResource( 1 )
 
-[node name="Camera2D" parent="Player" index="4"]
+[node name="Camera2D" parent="Player" index="3"]
 current = true
-
-[node name="CanvasModulate" parent="." index="5"]
-position = Vector2( 23, -152 )
 
 [node name="Camera" parent="Cameras" index="0" instance=ExtResource( 2 )]
 position = Vector2( 2009, -433 )

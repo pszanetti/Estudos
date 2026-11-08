@@ -14,7 +14,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Heist Meisters 3.4.4"
+config/name="Heist Meisters"
 run/main_scene="res://Levels/Level1.tscn"
 config/icon="res://icon.png"
 
@@ -62,7 +62,7 @@ move_right={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-torch_toggle={
+toggle_vision_mode={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
