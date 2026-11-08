@@ -6,13 +6,14 @@ var doors_close = true
 
 func _on_Door_body_entered(body: Node) -> void:
 #	if body.name == "Player": ou
-#	Checa se a area de olisão é do Player
-		if body.collision_layer == 1:
-			can_click = true
-		else:		# -> Permite que guardas passem sem o click ou senha
-			open()
-			pass
+#	Checa se a area de colisão é do Player
+#	print(body.collision_layer)
+	if body.collision_layer == 1:
+		can_click = true
+	else:		# -> Permite que guardas passem sem o click ou senha
+		open()
 		pass
+	pass
 
 
 
