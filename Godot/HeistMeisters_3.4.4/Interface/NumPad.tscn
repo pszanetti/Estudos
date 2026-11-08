@@ -43,13 +43,20 @@ region_rect = Rect2( 0, 0, 100, 100 )
 
 [node name="NumPad" type="Popup"]
 visible = true
-margin_right = 180.0
-margin_bottom = 300.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = -460.0
+margin_bottom = -60.0
 rect_min_size = Vector2( 180, 300 )
 theme = SubResource( 3 )
 script = ExtResource( 10 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -90.0
+margin_right = 90.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 180, 300 )
 texture = ExtResource( 2 )
