@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/TemplateLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/NPC/Camera.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Levels/Destinations.gd" type="Script" id=5]
 [ext_resource path="res://Characters/NPC/GuardRonda.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Destinations2.gd" type="Script" id=7]
+[ext_resource path="res://Interface/Doors/Door.tscn" type="PackedScene" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1812, 648, 2338, 990, 1043, 1000, 1651, 648, 2348.65, 226.509, 1812, 502, 1779.62, 219.918, 1650, 501, 1044.63, 307.144, 1133.85, 216.922, -313, -448, 313, -448, 315, 120, 117.347, 116.587, 78.273, 114.376, 238.283, 1015.22, -309.783, 1015.22, -299.703, 459.595, 82.0527, 467.154, 179, 482, 242, 482, 175, 361, 116.403, 203.424, 427, 485, 935, 482, 935, 1000, 341.597, 998.841, 427, 358, 342.857, 362.581, 395, 204, 1651, -431, 1655, 104, 1136, 105, 1039, -432, 1039, 216, 955, -444, 959, 116, 435.433, 117.531, 395, -444, 433.545, 211.919, 1742.22, -426.335, 2346, -428, 2346, 95, 1776.62, 101.552, 1739.16, 215.423, 927.46, 307.144, 919, 351, -313, 112 )
@@ -98,3 +99,12 @@ position = Vector2( -56, -202 )
 
 [node name="Guard" parent="Guards" index="1" instance=ExtResource( 3 )]
 position = Vector2( 1374, 491 )
+
+[node name="Door0" parent="Doors" index="0" instance=ExtResource( 8 )]
+position = Vector2( 97, 159 )
+
+[node name="Door1" parent="Doors" index="1" instance=ExtResource( 8 )]
+position = Vector2( 417, 160 )
+
+[node name="Door2" parent="Doors" index="2" instance=ExtResource( 8 )]
+position = Vector2( 1761, 159 )
