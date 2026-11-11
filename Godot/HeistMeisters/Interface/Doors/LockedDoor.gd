@@ -19,7 +19,7 @@ func _on_LockedDoor_input_event(viewport: Node, event: InputEvent, shape_idx: in
 func _on_LockedDoor_body_entered(body: Node) -> void:
 	#	if body.name == "Player": ou
 #	Checa se a area de colisão é do Player
-	print(body.collision_layer)
+#	print(body.collision_layer)
 	if body.collision_layer == 1:
 		can_click = true
 	else:		# -> Permite que guardas passem sem o click ou senha
@@ -30,7 +30,7 @@ func _on_LockedDoor_body_entered(body: Node) -> void:
 
 
 func _on_LockedDoor_body_exited(body: Node) -> void:
-	print(doors_close)
+#	print(doors_close)
 	if ! doors_close:
 		animation.play("closeDoor")
 		doors_close = true

@@ -14,7 +14,20 @@ export var start_offset: int = 0  # Permite escolher no Inspector onde este guar
 
 var current_index: int = 0
 
+#### PARA E GIAR AO REDOR EM CADA POSITION2D
+export var look_speed_deg = 90.0    # graus por segundo
+export var look_min_deg = 180.0
+export var look_max_deg = 360.0
+
+var is_looking = false
+var look_remaining = 0.0   # radianos que ainda faltam girar
+var look_dir = 1
+##############################################
+
+
 func _ready() -> void:
+	print(" Nova Versão ")
+	randomize()
 	possible_destinations = avaliable_destinations.get_children()
 
 	if possible_destinations.size() > 0:
@@ -25,9 +38,39 @@ func _ready() -> void:
 	make_path()
 
 
-func _process(_delta: float) -> void:
-	if path.size() > 0:
+func _process(delta: float) -> void:
+	if is_looking:
+		do_look(delta)
+	elif path.size() > 0:
 		navigate()
+	
+#	if path.size() > 0:
+#		navigate()
+##### Para parar e olhar ao redor
+#######################################
+func start_look() -> void:
+	is_looking = true
+	motion = Vector2.ZERO
+	look_dir = 1 if randi() % 2 == 0 else -1
+	look_remaining = deg2rad(rand_range(look_min_deg, look_max_deg))
+
+func do_look(delta: float) -> void:
+	var step = deg2rad(look_speed_deg) * delta
+	step = min(step, look_remaining)
+	rotation += look_dir * step
+	look_remaining -= step
+	if look_remaining <= 0.0:
+		finish_look()
+
+func finish_look() -> void:
+	is_looking = false
+	current_index = (current_index + 1) % possible_destinations.size()
+	make_path()
+#########################################
+##########################################	
+	
+
+
 
 func navigate() -> void:
 	var distance_to_destination = global_position.distance_to(path[0])    
@@ -38,13 +81,19 @@ func navigate() -> void:
 		update_path()
 
 func update_path() -> void:
-# Se chegou ao final do caminho atual (chegou no Position2D)
+	# Se chegou ao final do caminho atual (chegou no Position2D)
 	if path.size() <= 1:
-# Avança para o próximo Position2D na ordem (0 -> 1 -> 2 -> 0...)
-		current_index = (current_index + 1) % possible_destinations.size()
-		make_path()
+		path = []          # impede o navigate() de rodar enquanto observa
+		start_look()
 	else:
 		path.remove(0)
+## Se chegou ao final do caminho atual (chegou no Position2D)
+#	if path.size() <= 1:
+## Avança para o próximo Position2D na ordem (0 -> 1 -> 2 -> 0...)
+#		current_index = (current_index + 1) % possible_destinations.size()
+#		make_path()
+#	else:
+#		path.remove(0)
 
 func move() -> void:
 # 1. Calcula o vetor de direção até o próximo ponto do caminho
