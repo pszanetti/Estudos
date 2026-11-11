@@ -18,7 +18,6 @@ embedded_instances {
   "\"\n"
   "  position {\n"
   "    y: 257.0\n"
-  "    z: 3.0\n"
   "  }\n"
   "}\n"
   "embedded_components {\n"
@@ -91,7 +90,7 @@ embedded_instances {
   ""
   position {
     y: 104.0
-    z: 826.0
+    z: 951.0
   }
 }
 embedded_instances {
@@ -118,7 +117,6 @@ embedded_instances {
   "  position {\n"
   "    x: -1024.0\n"
   "    y: 300.0\n"
-  "    z: -1.0\n"
   "  }\n"
   "}\n"
   "embedded_components {\n"
@@ -137,7 +135,6 @@ embedded_instances {
   "\"\n"
   "  position {\n"
   "    y: 300.0\n"
-  "    z: -1.0\n"
   "  }\n"
   "}\n"
   "embedded_components {\n"
@@ -157,7 +154,6 @@ embedded_instances {
   "  position {\n"
   "    x: 1024.0\n"
   "    y: 300.0\n"
-  "    z: -1.0\n"
   "  }\n"
   "}\n"
   ""
