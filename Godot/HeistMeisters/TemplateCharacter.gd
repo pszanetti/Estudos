@@ -6,7 +6,7 @@ func _ready() -> void:
 	Global.Player = self
 	pass
 
-onready var torch: Light2D = $Torch
+#onready var torch: Light2D = $Torch
 
 func _physics_process(_delta: float) -> void:
 	update_movement()

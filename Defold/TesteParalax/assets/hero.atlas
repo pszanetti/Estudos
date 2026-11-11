@@ -1,0 +1,43 @@
+images {
+  image: "/assets/images/Pink/alienPink_stand.png"
+}
+images {
+  image: "/assets/images/Pink/alienPink_walk1.png"
+}
+images {
+  image: "/assets/images/Pink/alienPink_walk2.png"
+}
+images {
+  image: "/assets/images/Pink/alienPink_jump.png"
+}
+images {
+  image: "/assets/images/blue_grass.png"
+}
+animations {
+  id: "idle"
+  images {
+    image: "/assets/images/Pink/alienPink_stand.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 12
+}
+animations {
+  id: "run"
+  images {
+    image: "/assets/images/Pink/alienPink_walk1.png"
+  }
+  images {
+    image: "/assets/images/Pink/alienPink_walk2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 12
+}
+animations {
+  id: "jump"
+  images {
+    image: "/assets/images/Pink/alienPink_jump.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 0
+}
+extrude_borders: 2

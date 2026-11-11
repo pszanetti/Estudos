@@ -1,0 +1,24 @@
+-- parallax_layer.script
+go.property("factor", 0.5)
+go.property("period", 1024)
+go.property("cam", msg.url("/camera"))   -- troque pelo nome real
+
+function init(self)
+	print("parallax iniciou, cam =", self.cam)
+end
+
+function update(self, dt)
+	local cam = go.get_position(self.cam)
+	local P = self.period
+	local off = cam.x * (1 - self.factor)
+	local s = ((off + P / 2) % P) - P / 2
+
+	local p = go.get_position()
+	p.x = math.floor(cam.x - s + 0.5)
+	p.y = cam.y
+	go.set_position(p)
+
+	if math.floor(cam.x) % 60 == 0 then
+		print("cam.x", cam.x, "bg.x", p.x)
+	end
+end

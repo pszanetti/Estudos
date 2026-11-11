@@ -1,0 +1,57 @@
+-- player.script
+go.property("speed", 200)
+go.property("gravity", -900)
+go.property("jump", 320)
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.dir = 0
+	self.vy = 0
+	self.on_ground = false
+	self.correction = vmath.vector3()
+end
+
+function update(self, dt)
+	-- gravidade
+	self.vy = self.vy + self.gravity * dt
+
+	local pos = go.get_position()
+	pos.x = pos.x + self.dir * self.speed * dt
+	pos.y = pos.y + self.vy * dt
+	go.set_position(pos)
+
+	-- zera para o próximo frame de colisão
+	self.correction = vmath.vector3()
+	self.on_ground = false
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("left") then
+		self.dir = (action.released and 0) or -1
+	elseif action_id == hash("right") then
+		self.dir = (action.released and 0) or 1
+	elseif action_id == hash("jump") and action.pressed and self.on_ground then
+		self.vy = self.jump
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("contact_point_response") then
+		-- separa o player do que ele colidiu
+		if message.distance > 0 then
+			local proj = vmath.project(self.correction, message.normal * message.distance)
+			if proj < 1 then
+				local comp = (message.distance - message.distance * proj) * message.normal
+				go.set_position(go.get_position() + comp)
+				self.correction = self.correction + comp
+			end
+		end
+		-- chão: normal apontando para cima
+		if message.normal.y > 0.7 then
+			self.on_ground = true
+			self.vy = 0
+		elseif message.normal.y < -0.7 and self.vy > 0 then
+			self.vy = 0  -- bateu a cabeça
+		end
+	end
+end
