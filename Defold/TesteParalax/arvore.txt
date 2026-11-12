@@ -1,0 +1,89 @@
+.
+├── assets
+│   ├── Fonts
+│   │   ├── gui_font.font
+│   │   └── Kenney Future.ttf
+│   ├── images
+│   │   ├── Pink
+│   │   │   ├── alienPink_climb1.png
+│   │   │   ├── alienPink_climb2.png
+│   │   │   ├── alienPink_duck.png
+│   │   │   ├── alienPink_front.png
+│   │   │   ├── alienPink_hit.png
+│   │   │   ├── alienPink_jump.png
+│   │   │   ├── alienPink_stand.png
+│   │   │   ├── alienPink_swim1.png
+│   │   │   ├── alienPink_swim2.png
+│   │   │   ├── alienPink_walk1.png
+│   │   │   └── alienPink_walk2.png
+│   │   ├── blue_grass.png
+│   │   └── spritesheet_tiles.png
+│   ├── sounds
+│   │   ├── footstep_grass_000.ogg
+│   │   └── phaseJump1.ogg
+│   ├── dust.particlefx
+│   ├── hero.atlas
+│   ├── jump.sound
+│   ├── land.sound
+│   ├── level.tilemap
+│   └── level.tilesource
+├── build
+│   └── default
+│       ├── assets
+│       │   ├── hero.a.texturesetc
+│       │   ├── level.tilemapc
+│       │   └── level.t.texturesetc
+│       ├── builtins
+│       │   ├── graphics
+│       │   │   └── default.texture_profilesc
+│       │   ├── input
+│       │   │   └── default.gamepadsc
+│       │   ├── materials
+│       │   │   ├── sprite.materialc
+│       │   │   └── tile_map.materialc
+│       │   ├── render
+│       │   │   ├── default.display_profilesc
+│       │   │   ├── default.renderc
+│       │   │   └── default.render_scriptc
+│       │   └── scripts
+│       │       ├── debugger.luac
+│       │       ├── edn.luac
+│       │       ├── mobdebug.luac
+│       │       └── socket.luac
+│       ├── _defold
+│       │   └── debugger
+│       │       └── start.luac
+│       ├── input
+│       │   └── game.input_bindingc
+│       ├── main
+│       │   ├── camera.scriptc
+│       │   ├── hero.scriptc
+│       │   ├── main.collectionc
+│       │   └── parallax_layer.scriptc
+│       ├── game.projectc
+│       ├── _generated_125c4217.texturec
+│       ├── _generated_1eb0fe1c.camerac
+│       ├── _generated_309c7a38.goc
+│       ├── _generated_3bdb335.spc
+│       ├── _generated_6c33c5e7.goc
+│       ├── _generated_77c2854.spc
+│       ├── _generated_814ae1ba.collisionobjectc
+│       ├── _generated_88cc237c.texturec
+│       ├── _generated_d0c5f040.spritec
+│       ├── _generated_db457bac.goc
+│       ├── _generated_e1ea9aca.spritec
+│       ├── _generated_ea332101.goc
+│       ├── _generated_ec93b01f.spritec
+│       └── _generated_ef1feced.collisionobjectc
+├── input
+│   └── game.input_binding
+├── main
+│   ├── camera.script
+│   ├── hero.script
+│   ├── main.collection
+│   └── parallax_layer.script
+├── arvore.txt
+├── game.project
+└── README.md
+
+21 directories, 66 files

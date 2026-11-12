@@ -1,0 +1,141 @@
+.
+├── assets
+│   ├── app_icons
+│   │   ├── appicon.icns
+│   │   └── appicon.ico
+│   ├── images
+│   │   ├── background.png
+│   │   ├── background.png.import
+│   │   ├── bush-large.png
+│   │   ├── bush-large.png.import
+│   │   ├── bush-small.png
+│   │   ├── bush-small.png.import
+│   │   ├── graveyard.png
+│   │   ├── graveyard.png.import
+│   │   ├── hero-idle-1.png
+│   │   ├── hero-idle-1.png.import
+│   │   ├── hero-idle-2.png
+│   │   ├── hero-idle-2.png.import
+│   │   ├── hero-idle-3.png
+│   │   ├── hero-idle-3.png.import
+│   │   ├── hero-idle-4.png
+│   │   ├── hero-idle-4.png.import
+│   │   ├── hero-run-1.png
+│   │   ├── hero-run-1.png.import
+│   │   ├── hero-run-2.png
+│   │   ├── hero-run-2.png.import
+│   │   ├── hero-run-3.png
+│   │   ├── hero-run-3.png.import
+│   │   ├── hero-run-4.png
+│   │   ├── hero-run-4.png.import
+│   │   ├── hero-run-5.png
+│   │   ├── hero-run-5.png.import
+│   │   ├── hero-run-6.png
+│   │   ├── hero-run-6.png.import
+│   │   ├── logo.png
+│   │   ├── logo.png.import
+│   │   ├── mountains.png
+│   │   ├── mountains.png.import
+│   │   ├── statue.png
+│   │   ├── statue.png.import
+│   │   ├── stone-1.png
+│   │   ├── stone-1.png.import
+│   │   ├── stone-2.png
+│   │   ├── stone-2.png.import
+│   │   ├── stone-3.png
+│   │   ├── stone-3.png.import
+│   │   ├── stone-4.png
+│   │   ├── stone-4.png.import
+│   │   ├── tree-1.png
+│   │   ├── tree-1.png.import
+│   │   ├── tree-2.png
+│   │   ├── tree-2.png.import
+│   │   ├── tree-3.png
+│   │   └── tree-3.png.import
+│   └── sounds
+│       ├── soundtrack.ogg
+│       └── soundtrack.ogg.import
+├── build
+│   └── default
+│       ├── assets
+│       │   ├── sounds
+│       │   │   └── soundtrack.oggc
+│       │   └── Sounds
+│       ├── builtins
+│       │   ├── graphics
+│       │   │   └── default.texture_profilesc
+│       │   ├── input
+│       │   │   └── default.gamepadsc
+│       │   ├── materials
+│       │   │   └── sprite.materialc
+│       │   ├── render
+│       │   │   ├── default.display_profilesc
+│       │   │   ├── default.renderc
+│       │   │   └── default.render_scriptc
+│       │   └── scripts
+│       │       ├── debugger.luac
+│       │       ├── edn.luac
+│       │       ├── mobdebug.luac
+│       │       └── socket.luac
+│       ├── _defold
+│       │   └── debugger
+│       │       └── start.luac
+│       ├── entities
+│       │   └── player
+│       │       ├── player.a.texturesetc
+│       │       ├── player.collectionc
+│       │       └── player.scriptc
+│       ├── input
+│       │   └── game.input_bindingc
+│       ├── main
+│       │   ├── rendy
+│       │   ├── main.a.texturesetc
+│       │   ├── main.collectionc
+│       │   └── main.scriptc
+│       ├── rendy
+│       │   ├── rendy.camerac
+│       │   ├── rendy.goc
+│       │   ├── rendy.luac
+│       │   └── rendy.scriptc
+│       ├── screens
+│       │   └── gameplay
+│       ├── game.projectc
+│       ├── _generated_295d5ad4.camerac
+│       ├── _generated_3374aaeb.spritec
+│       ├── _generated_4118465b.goc
+│       ├── _generated_5bf7feaf.goc
+│       ├── _generated_5fcfd5bf.spritec
+│       ├── _generated_631d265.texturec
+│       ├── _generated_74f2c36f.spritec
+│       ├── _generated_7b0cfec4.texturec
+│       ├── _generated_82d7d021.spritec
+│       ├── _generated_83829bbe.spritec
+│       ├── _generated_8d45b0e7.collectionfactoryc
+│       ├── _generated_8d67020c.goc
+│       ├── _generated_8f344fb9.spritec
+│       ├── _generated_9ba6fb96.spritec
+│       ├── _generated_9e0732ec.goc
+│       ├── _generated_a3b6d5a4.spc
+│       ├── _generated_edc03aba.soundc
+│       ├── _generated_f27c2e5d.goc
+│       └── _generated_fc12d42.goc
+├── entities
+│   └── player
+│       ├── player.atlas
+│       ├── player.collection
+│       └── player.script
+├── input
+│   └── game.input_binding
+├── main
+│   ├── main.atlas
+│   ├── main.collection
+│   └── main.script
+├── screens
+│   ├── gameplay
+│   │   └── gameplay.collection
+│   └── mainmenu
+├── arvore.txt
+├── game.project
+└── README.md
+
+33 directories, 106 files
