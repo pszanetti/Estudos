@@ -133,8 +133,8 @@
             358.0474384830355
             0.0
           ]
-          :fov-x 3770.497456628852
-          :fov-y 1585.4298214800751
+          :fov-x 2960.780704149337
+          :fov-y 1361.0449892144466
           :position [
             503.72226732926674
             1375.883238009752
@@ -152,38 +152,15 @@
       "/main/main.gui" {
         :camera {
           :focus-point [
-            432.6962101009656
-            368.30176015006896
+            411.7277189325159
+            381.273792822076
             0.0
           ]
-          :fov-x 1960.7713921064553
-          :fov-y 824.47090176
+          :fov-x 2000.728974320894
+          :fov-y 919.7176074065172
           :position [
-            432.6962101009656
-            368.30176015006896
-            5000.0
-          ]
-          :projection :orthographic
-          :rotation [
-            0.0
-            0.0
-            0.0
-            1.0
-          ]
-        }
-      }
-      "/main/paralax.collection" {
-        :camera {
-          :focus-point [
-            -511.2067759696504
-            -165.44811066667197
-            0.0
-          ]
-          :fov-x 1046.772941162995
-          :fov-y 450.60916784451985
-          :position [
-            -511.2067759696504
-            -165.44811066667197
+            411.7277189325159
+            381.273792822076
             5000.0
           ]
           :projection :orthographic
@@ -228,6 +205,14 @@
           "/game.project"
           :form
         ]
+        [
+          "/main/background.go"
+          :scene
+        ]
+        [
+          "/main/camera.script"
+          :code
+        ]
       ]
     ]
     :recent-files [
@@ -264,28 +249,12 @@
         :scene
       ]
       [
-        "/main/paralax.collection"
-        :scene
-      ]
-      [
         "/assets/hero.atlas"
         :scene
       ]
       [
         "/main/main.gui"
         :scene
-      ]
-      [
-        "/main/paralax.script"
-        :code
-      ]
-      [
-        "/main/main.collection"
-        :scene
-      ]
-      [
-        "/main/hero.script"
-        :code
       ]
       [
         "/assets/level.tilemap"
@@ -298,6 +267,30 @@
       [
         "/game.project"
         :form
+      ]
+      [
+        "/main/paralax.collection"
+        :scene
+      ]
+      [
+        "/main/hero.script"
+        :code
+      ]
+      [
+        "/main/paralax.script"
+        :code
+      ]
+      [
+        "/main/background.go"
+        :scene
+      ]
+      [
+        "/main/camera.script"
+        :code
+      ]
+      [
+        "/main/main.collection"
+        :scene
       ]
     ]
   }

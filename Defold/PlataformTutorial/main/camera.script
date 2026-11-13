@@ -1,0 +1,27 @@
+-- camera.script
+go.property("target", msg.url("/hero"))
+go.property("lerp_x", 10)         -- 0 = cola no player
+go.property("follow_y", false)    -- true = copia o Y do player
+
+function init(self)
+	msg.post("#camera", "acquire_camera_focus")
+	local p = go.get_position()
+	self.x = go.get_position(self.target).x
+	self.y = p.y                  -- Y inicial = o do editor
+	self.z = p.z
+end
+
+function update(self, dt)
+	local t = go.get_position(self.target)
+
+	if self.lerp_x > 0 then
+		self.x = self.x + (t.x - self.x) * (1 - math.exp(-self.lerp_x * dt))
+	else
+		self.x = t.x
+	end
+
+	local y = self.y
+	if self.follow_y then y = t.y end
+
+	go.set_position(vmath.vector3(math.floor(self.x + 0.5), math.floor(y + 0.5), self.z))
+end

@@ -1,80 +1,26 @@
---[[  Defold Vignette # 1:  Parallax Techniques
-=============================================================================================
 
-Lua Script File:  gController.script
-
-Script Summary: This script provides the following logic:
-
-(1) Moves the foreGround Game Objects to the left during each update cycle
-(2) Resets foreGround Game Objects when they moves out of the active viewport
-
-=============================================================================================
---]] 
-
--- Setup a table with the foreGround panel IDs
---[[  Defold Vignette # 1:  Parallax Techniques
-=============================================================================================
-Lua Script File:  gController.script
-=============================================================================================
---]]
-local gSegments = { "foreGround1", "foreGround2", "foreGround3" }
+-- parallax_layer.script
+go.property("factor", 0.5)
+go.property("period", 1024)
+go.property("cam", msg.url("/camera"))   -- troque pelo nome real
 
 function init(self)
-	self.gImageSize = go.get("foreGround1#sprite", "size")
-	self.width = self.gImageSize.x
-
-	self.parallax_factor = 0.5
-	self.player_x = 0
-	self.previous_player_x = nil
-
-	-- Posições relativas dos três segmentos
-	self.offsets = { -self.width, 0, self.width }
+	print("parallax iniciou, cam =", self.cam)
+	msg.post(".", "acquire_input_focus")
 end
 
 function update(self, dt)
-	local width = self.width
-	local total_width = width * #gSegments
+	local cam = go.get_position(self.cam)
+	local P = self.period
+	local off = cam.x * (1 - self.factor)
+	local s = ((off + P / 2) % P) - P / 2
 
-	-- Identifica a direção do movimento do jogador
-	if self.previous_player_x == nil then
-		self.previous_player_x = self.player_x
-	end
+	local p = go.get_position()
+	p.x = math.floor(cam.x - s + 0.5)
+	p.y = cam.y
+	go.set_position(p)
 
-	local dx = self.player_x - self.previous_player_x
-	self.previous_player_x = self.player_x
-
-	-- Movimento do fundo na velocidade definida pelo fator de paralaxe
-	local parallax_base = self.player_x * self.parallax_factor
-
-	-- Distância necessária para considerar um segmento fora da área útil
-	local threshold = 1.6 * width
-
-	for i, id in ipairs(gSegments) do
-		local target_x = parallax_base + self.offsets[i]
-		local diff = target_x - self.player_x
-
-		-- Jogador indo para a direita:
-		-- transfere segmentos que ficaram para trás, à esquerda.
-		if dx > 0 and diff < -threshold then
-			self.offsets[i] = self.offsets[i] + total_width
-
-			-- Jogador indo para a esquerda:
-			-- transfere segmentos que ficaram para trás, à direita.
-		elseif dx < 0 and diff > threshold then
-			self.offsets[i] = self.offsets[i] - total_width
-		end
-
-		-- Recalcula a posição depois da eventual reciclagem
-		target_x = parallax_base + self.offsets[i]
-
-		local pos = go.get_position(id)
-		pos.x = math.floor(target_x + 0.5)
-		go.set_position(pos, id)
-	end
-end
-
-function on_message(self, message_id, message, sender)
-	if message_id == hash("set_player_pos") then
-		self.player_x = message.x
+	if math.floor(cam.x) % 60 == 0 then
+		print("cam.x", cam.x, "bg.x", p.x)
 	end
 end

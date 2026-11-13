@@ -1,19 +1,14 @@
 name: "main"
-collection_instances {
-  id: "paralax"
-  collection: "/main/paralax.collection"
+instances {
+  id: "background"
+  prototype: "/main/background.go"
   position {
-    x: 266.0
-    y: 399.0
-  }
-  scale3 {
-    z: -1.0
+    y: 335.0
   }
 }
 scale_along_z: 0
 embedded_instances {
   id: "hero"
-  children: "operator"
   data: "components {\n"
   "  id: \"hero\"\n"
   "  component: \"/main/hero.script\"\n"
@@ -99,8 +94,20 @@ embedded_instances {
   ""
 }
 embedded_instances {
-  id: "operator"
-  data: "embedded_components {\n"
+  id: "gui"
+  data: "components {\n"
+  "  id: \"main\"\n"
+  "  component: \"/main/main.gui\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "camera"
+  data: "components {\n"
+  "  id: \"camera1\"\n"
+  "  component: \"/main/camera.script\"\n"
+  "}\n"
+  "embedded_components {\n"
   "  id: \"camera\"\n"
   "  type: \"camera\"\n"
   "  data: \"aspect_ratio: 1.0\\n"
@@ -112,14 +119,7 @@ embedded_instances {
   "}\n"
   ""
   position {
+    y: 410.0
     z: 867.0
   }
-}
-embedded_instances {
-  id: "gui"
-  data: "components {\n"
-  "  id: \"main\"\n"
-  "  component: \"/main/main.gui\"\n"
-  "}\n"
-  ""
 }

@@ -10,9 +10,8 @@ local JUMP_TAKEOFF = 600
 function init(self)
 	msg.post("#", "acquire_input_focus")
 	-- Ativando a Camera
-	msg.post("@render", "use_camera_projection")
-	msg.post("operator#camera", "acquire_camera_focus")
-	
+	msg.post("camera#camera", "acquire_camera_focus")
+
 
 	-- Inicializa variáveis de estado
 	self.velocity = vmath.vector3(0, 0, 0)
@@ -48,7 +47,7 @@ function animate(self)
 	end
 	-- print(self.velocity.x/500)
 	-- msg.post("paralax#script", "set_parallax_dir", { dir = self.velocity })
-	
+
 end
 
 -- Definindo o lado que o personagem olha
@@ -64,25 +63,25 @@ end
 
 
 function handle_level_collisions(self, normal, distance)
---[[Esta função resolve um problema clássico da física de jogos: quando o personagem "entra" um pouco dentro 
+	--[[Esta função resolve um problema clássico da física de jogos: quando o personagem "entra" um pouco dentro 
 da parede ou do chão, precisamos empurrá-lo para fora instantaneamente e zerar a velocidade na direção certa.
 ]]-- Ajustando a penetração das colisões
-	
+
 	-- distance = distance * vmath.length(normal) -> o comprimento deve ser sempre 1
---[[ Ajusta a profundidade real que o personagem invadiu
+	--[[ Ajusta a profundidade real que o personagem invadiu
  o obstáculo multiplicando pelo comprimento do vetor normal.]]--
-	
+
 	if distance > 0 then
-		
+
 		-- Usamos vmath.dot para obter a projeção escalar corretamente
 		local projection = vmath.dot(self.correction, normal)
---[[Se o personagem estiver espremido em um canto (batendo na parede e no chão ao mesmo tempo), 
+		--[[Se o personagem estiver espremido em um canto (batendo na parede e no chão ao mesmo tempo), 
 a função calcula quanto ajuste já foi feito (self.correction) para evitar 
 que o motor empurre o personagem duas vezes na mesma direção e cause um "tremelique".]]--
-		
+
 		local compensation_distance = distance - projection
 		-- Calcula o quanto ainda falta empurrar o personagem para fora da colisão.
-		
+
 		if compensation_distance > 0 then
 			local compensation = normal * compensation_distance
 			go.set_position(go.get_position() + compensation)
@@ -155,7 +154,6 @@ function fixed_update(self, dt)
 	self.ground_contact = false
 	self.correction = vmath.vector3(0, 0, 0)
 
-	msg.post("/paralax/control#paralax", "set_player_pos", { x = go.get_position().x })
 end
 
 function on_input(self, action_id, action)
@@ -173,7 +171,6 @@ function on_input(self, action_id, action)
 		flip(self.direction)
 
 		-- ENVIA A DIREÇÃO PARA O PARALLAX AQUI:
-		msg.post("/paralax/control#paralax", "set_parallax_dir", { dir = dir_value })
 
 	elseif action_id == hash("jump") and action.pressed and self.ground_contact then
 		self.velocity.y = JUMP_TAKEOFF
