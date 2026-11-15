@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Interface/Theme.tres" type="Theme" id=1]
 [ext_resource path="res://GFX/Interface/PNG/glassPanel.png" type="Texture" id=2]
 [ext_resource path="res://GFX/Interface/PNG/metalPanel_plate.png" type="Texture" id=3]
 [ext_resource path="res://GFX/Interface/PNG/dotGreen.png" type="Texture" id=4]
+[ext_resource path="res://Computer/ComputerPopup.gd" type="Script" id=5]
 
 [node name="ComputerPopup" type="Popup"]
 margin_right = 140.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 80 )
+script = ExtResource( 5 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchor_right = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Levels/TemplateLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/NPC/Camera.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Levels/Destinations2.gd" type="Script" id=7]
 [ext_resource path="res://Interface/Doors/Door.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Interface/Doors/LockedDoor.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Characters/NPC/GuardRonda.gd" type="Script" id=10]
 [ext_resource path="res://Computer/Computer.tscn" type="PackedScene" id=11]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -100,10 +99,6 @@ rotation = -1.5708
 
 [node name="GuardaRonda" parent="Guards" index="0" instance=ExtResource( 6 )]
 position = Vector2( -56, -202 )
-script = ExtResource( 10 )
-look_speed_deg = 90.0
-look_min_deg = 180.0
-look_max_deg = 360.0
 
 [node name="Guard" parent="Guards" index="1" instance=ExtResource( 3 )]
 position = Vector2( 1374, 491 )
@@ -112,11 +107,14 @@ position = Vector2( 1374, 491 )
 position = Vector2( 417, 160 )
 
 [node name="LockedDoor" parent="Doors" index="1" instance=ExtResource( 9 )]
-position = Vector2( 96, 156 )
+position = Vector2( 97, 162 )
 
 [node name="Computer" parent="." index="9" instance=ExtResource( 11 )]
-position = Vector2( -130, 862 )
+position = Vector2( -137, 869 )
 rotation = 1.5708
+combination_lenght = 4
 
 [node name="VisionMode" parent="." index="10"]
 visible = false
+
+[connection signal="combination_emited" from="Computer" to="Doors/LockedDoor" method="_on_Computer_combination_emited"]

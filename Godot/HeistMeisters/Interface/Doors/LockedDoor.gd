@@ -54,3 +54,8 @@ func open():
 	doors_close = false
 	animation.play("openDoor")
 	pass
+
+
+func _on_Computer_combination_emited(numbers, lock_group) -> void:
+	$CanvasLayer/NumPad.combination = numbers
+	pass # Replace with function body.
