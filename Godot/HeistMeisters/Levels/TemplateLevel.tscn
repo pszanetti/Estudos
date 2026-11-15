@@ -131,6 +131,8 @@ tile_data = PoolIntArray( 196602, 1, 0, 196603, 1, 2, 196604, 1, 2, 196605, 1, 2
 
 [node name="Furniture" type="TileMap" parent="."]
 tile_set = SubResource( 4 )
+collision_layer = 2
+collision_mask = 5
 format = 1
 
 [node name="Destinations" type="Node" parent="."]

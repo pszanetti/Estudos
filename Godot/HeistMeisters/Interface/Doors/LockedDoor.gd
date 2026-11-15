@@ -6,7 +6,8 @@ var doors_close = true
 onready var animation = $AnimationPlayer
 
 func _ready() -> void:
-	generate_combination()
+
+	$Label.rect_rotation = - rotation_degrees
 
 
 func _on_LockedDoor_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -44,11 +45,6 @@ func _on_NumPad_combination_correct() -> void:
 	$CanvasLayer/NumPad.hide()
 	doors_close = false
 
-func generate_combination():
-	var length = 6
-	var combination = CombinationGenerator.generate_combination(length)
-	$CanvasLayer/NumPad.combination = combination
-	print(combination)
 	
 func open():
 	doors_close = false

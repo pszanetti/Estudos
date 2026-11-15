@@ -26,7 +26,7 @@ var look_dir = 1
 
 
 func _ready() -> void:
-	print(" Nova Versão ")
+#	print(" Nova Versão ")
 	randomize()
 	possible_destinations = avaliable_destinations.get_children()
 
