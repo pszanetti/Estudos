@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Interface/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://GFX/Interface/PNG/glassPanel.png" type="Texture" id=2]
+[ext_resource path="res://GFX/Interface/PNG/metalPanel_plate.png" type="Texture" id=3]
+[ext_resource path="res://GFX/Interface/PNG/dotGreen.png" type="Texture" id=4]
+
+[node name="ComputerPopup" type="Popup"]
+margin_right = 140.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 80 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/CenterContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 135.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 130, 90 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NinePatchRect/CenterContainer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "test"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.0
+margin_top = -7.0
+margin_right = -2.0
+margin_bottom = -2.0
+rect_min_size = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 5
