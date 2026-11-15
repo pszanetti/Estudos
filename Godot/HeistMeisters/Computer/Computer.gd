@@ -13,6 +13,7 @@ var combination
 export var combination_lenght: int = 6
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Label.text = lock_group
 	$ComputerON.enabled = false
 	generate_combination()
 	emit_signal("combination_emited", combination, lock_group)

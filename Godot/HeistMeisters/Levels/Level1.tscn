@@ -113,6 +113,7 @@ position = Vector2( 97, 162 )
 [node name="Computer" parent="." index="9" instance=ExtResource( 11 )]
 position = Vector2( -137, 869 )
 rotation = 1.5708
+lock_group = "um"
 combination_lenght = 4
 
 [connection signal="combination_emited" from="Computer" to="Doors/LockedDoor" method="_on_Computer_combination_emited"]

@@ -6,7 +6,6 @@ var doors_close = true
 onready var animation = $AnimationPlayer
 
 func _ready() -> void:
-
 	$Label.rect_rotation = - rotation_degrees
 
 
@@ -53,5 +52,6 @@ func open():
 
 
 func _on_Computer_combination_emited(numbers, lock_group) -> void:
+	$Label.text = lock_group
 	$CanvasLayer/NumPad.combination = numbers
 	pass # Replace with function body.
