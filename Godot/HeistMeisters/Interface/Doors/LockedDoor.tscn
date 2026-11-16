@@ -16,7 +16,8 @@ margin_top = -640.0
 margin_right = 0.0
 margin_bottom = 0.0
 
-[node name="Label" type="Label" parent="." index="5"]
+[node name="Label" type="Label" parent="." index="5" groups=["labels"]]
+visible = false
 margin_left = -17.0
 margin_top = 36.0
 margin_right = 63.0

@@ -34,7 +34,8 @@ rotation = 1.5708
 enabled = false
 texture = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." groups=["labels"]]
+visible = false
 margin_left = 52.0
 margin_top = -13.0
 margin_right = 132.0

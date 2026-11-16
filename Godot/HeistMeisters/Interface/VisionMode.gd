@@ -23,12 +23,18 @@ func DARK_mode() -> void:
 	color = DARK
 	$AudioStreamPlayer2D.stream = load("res://SFX/nightvision_off.wav")
 	$AudioStreamPlayer2D.play()
+	get_tree().call_group("lights", "show")
+#	get_tree().call_group("Lanterna", "show")
+	get_tree().call_group("labels", "hide")
 #	alternar_luzes(true)
 	
 func NIGHTVISION_mode() -> void:
 	color = NIGHTVISION
 	$AudioStreamPlayer2D.stream = load("res://SFX/nightvision.wav")
 	$AudioStreamPlayer2D.play()
+	get_tree().call_group("lights", "hide")
+#	get_tree().call_group("Lanterna", "hide")
+	get_tree().call_group("labels", "show")
 #	alternar_luzes(true)
 
 

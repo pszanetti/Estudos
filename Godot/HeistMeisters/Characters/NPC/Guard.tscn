@@ -21,7 +21,7 @@ start_offset = 0
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 
-[node name="Torch" parent="." index="3" groups=["Lanternas"] instance=ExtResource( 2 )]
+[node name="Torch" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 10, 1 )
 texture = SubResource( 1 )
 offset = Vector2( 320, -4 )
