@@ -20,13 +20,12 @@ func _on_LockedDoor_body_entered(body: Node) -> void:
 	#	if body.name == "Player": ou
 #	Checa se a area de colisão é do Player
 #	print(body.collision_layer)
-	if body.collision_layer == 1:
+	if body.collision_layer == 1 or body.collision_layer == 16:
 		can_click = true
 	else:		# -> Permite que guardas passem sem o click ou senha
 		open()
-		pass
 	pass
-	pass # Replace with function body.
+
 
 
 func _on_LockedDoor_body_exited(body: Node) -> void:
@@ -34,7 +33,7 @@ func _on_LockedDoor_body_exited(body: Node) -> void:
 	if ! doors_close:
 		animation.play("closeDoor")
 		doors_close = true
-	if body.collision_layer == 1:	# -> Remove a permissão quando o Player se afasta
+	if body.collision_layer == 1 or body.collision_layer == 16:	# -> Remove a permissão quando o Player se afasta
 		can_click = false
 		$CanvasLayer/NumPad.hide()
 	pass # Replace with function body.

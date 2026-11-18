@@ -8,9 +8,13 @@
 [node name="Player" instance=ExtResource( 2 )]
 collision_mask = 14
 script = ExtResource( 1 )
+disguise_slowdown = 0.25
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
 
 [node name="LightOccluder2D" parent="." index="2"]
 occluder = ExtResource( 4 )
+
+[node name="Light2D" type="Light2D" parent="." index="3"]
+energy = 0.7

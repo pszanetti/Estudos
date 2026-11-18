@@ -140,6 +140,7 @@ format = 1
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -223, 291 )
+disguise_slowdown = 0.25
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 

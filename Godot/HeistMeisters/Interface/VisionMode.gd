@@ -1,6 +1,6 @@
 extends CanvasModulate
 
-const DARK: Color = Color("313131") 
+const DARK: Color = Color("202020") 
 const NIGHTVISION: Color = Color("3fa237")
 
 
