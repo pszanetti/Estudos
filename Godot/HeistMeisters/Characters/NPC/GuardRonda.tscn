@@ -9,6 +9,7 @@ flags = 4
 load_path = "res://.import/light.png-313669371dd3d7ff140182984723fdb2.stex"
 
 [node name="GuardaRonda" instance=ExtResource( 1 )]
+collision_mask = 23
 script = ExtResource( 2 )
 look_speed_deg = 90.0
 look_min_deg = 180.0

@@ -2,6 +2,12 @@ extends "res://Characters/TemplateCharacter.gd"
 
 var motion: Vector2
 
+const PLAYER_SPRITE = "res://GFX/PNG/Hitman 1/hitman1_stand.png"
+const BOX_SPRITE = "res://GFX/PNG/Tiles/tile_129.png"
+const PLAYER_OCCLUDER = "res://Characters/PlayerOcluder.tres"
+const BOX_OCCLUDER = "res://Characters/BoxOcluder.tres"
+var disguised = false
+
 func _ready() -> void:
 	Global.Player = self
 	pass
@@ -33,4 +39,28 @@ func update_movement():
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_vision_mode"):
 		get_tree().call_group("Interface", "cyclo_vision_mode")
-		pass
+	if Input.is_action_just_pressed("toggle_disguises"):
+		toggle_disguise()
+		
+func toggle_disguise() -> void:
+	if disguised:
+		reveal()
+	else:
+		disguise()
+	pass
+
+
+func reveal() -> void:
+	$Sprite.texture = load(PLAYER_SPRITE)
+	$LightOccluder2D.occluder = load(PLAYER_OCCLUDER)
+	disguised = false
+	collision_layer = 1
+	
+func disguise() -> void:
+	$Sprite.texture = load(BOX_SPRITE)
+	$LightOccluder2D.occluder = load(BOX_OCCLUDER)
+	collision_layer = 16
+	disguised = true
+	
+	
+	

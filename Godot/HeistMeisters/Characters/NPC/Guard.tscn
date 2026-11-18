@@ -19,7 +19,6 @@ start_offset = 0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-offset = Vector2( 0, 0 )
 
 [node name="Torch" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 10, 1 )
