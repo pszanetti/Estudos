@@ -1,7 +1,7 @@
 extends Popup
 
 var combination: Array = []
-var guess: Array = []
+var guess = []
 
 onready var display: Label = $VBoxContainer/DisplayContainer/NinePatchRect/Display
 onready var light: TextureRect = $VBoxContainer/ButtonContainer/GridContainer/StatusLight

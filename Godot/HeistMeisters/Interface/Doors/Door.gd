@@ -26,7 +26,7 @@ func _on_Door_body_exited(body: Node) -> void:
 	pass # Replace with function body.
 
 
-func _on_Door_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_Door_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_click:
 		open()
 	pass # Replace with function body.
