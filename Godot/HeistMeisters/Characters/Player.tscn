@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TemplateCharacter.gd" type="Script" id=1]
 [ext_resource path="res://Characters/TemplateCharacter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GFX/PNG/Hitman 1/hitman1_stand.png" type="Texture" id=3]
 [ext_resource path="res://Characters/BoxOcluder.tres" type="OccluderPolygon2D" id=4]
+[ext_resource path="res://Interface/Theme.tres" type="Theme" id=5]
 
 [node name="Player" instance=ExtResource( 2 )]
 collision_mask = 14
 script = ExtResource( 1 )
 disguise_slowdown = 0.25
+disguise_duration = 5.0
+number_of_disguises = 3
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
@@ -18,3 +21,16 @@ occluder = ExtResource( 4 )
 
 [node name="Light2D" type="Light2D" parent="." index="3"]
 energy = 0.7
+
+[node name="Timer" type="Timer" parent="." index="4"]
+one_shot = true
+
+[node name="DisguiseLabel" type="Label" parent="." index="5"]
+margin_left = 24.0
+margin_top = -32.0
+margin_right = 92.0
+margin_bottom = -5.0
+theme = ExtResource( 5 )
+text = "0.00"
+
+[connection signal="timeout" from="Timer" to="." method="reveal"]

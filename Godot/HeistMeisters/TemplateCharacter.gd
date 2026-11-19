@@ -8,22 +8,27 @@ const PLAYER_OCCLUDER = "res://Characters/PlayerOcluder.tres"
 const BOX_OCCLUDER = "res://Characters/BoxOcluder.tres"
 var disguised = false
 export var disguise_slowdown = 0.25
+export var disguise_duration = 5.0
+export var number_of_disguises = 3
 
 var velocity_multiplier = 1
 
 
 func _ready() -> void:
 	Global.Player = self
-	pass
+	$Timer.wait_time = disguise_duration
+	reveal()
 
 #onready var torch: Light2D = $Torch
 
 func _physics_process(_delta: float) -> void:
 	update_movement()
 	move_and_slide(motion * velocity_multiplier)
-	pass
+	if disguised:
+		$DisguiseLabel.text = str($Timer.time_left).pad_decimals(2)
+		$DisguiseLabel.rect_rotation = - rotation_degrees
 	
-func update_movement():
+func update_movement() -> void:
 	# Olhar na direção do ponteiro do mouse
 	look_at(get_global_mouse_position())
 	if Input.is_action_pressed("move_down"):
@@ -49,7 +54,7 @@ func _input(_event: InputEvent) -> void:
 func toggle_disguise() -> void:
 	if disguised:
 		reveal()
-	else:
+	elif number_of_disguises > 0:
 		disguise()
 	pass
 
@@ -58,14 +63,18 @@ func reveal() -> void:
 	$Sprite.texture = load(PLAYER_SPRITE)
 	$Light2D.texture = load(PLAYER_SPRITE)
 	$LightOccluder2D.occluder = load(PLAYER_OCCLUDER)
+	$DisguiseLabel.visible = false
 	disguised = false
 	collision_layer = 1
 	velocity_multiplier = 1
 	
 func disguise() -> void:
+	number_of_disguises -= 1
+	$Timer.start()
 	$Sprite.texture = load(BOX_SPRITE)
 	$Light2D.texture = load(BOX_SPRITE)
 	$LightOccluder2D.occluder = load(BOX_OCCLUDER)
+	$DisguiseLabel.show()
 	collision_layer = 16
 	disguised = true
 	velocity_multiplier = disguise_slowdown
