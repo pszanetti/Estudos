@@ -86,5 +86,9 @@ func disguise() -> void:
 	disguised = true
 	velocity_multiplier = disguise_slowdown
 	
-	
+func collect_briefcase() -> void:
+	var loot = Node.new
+	loot.set_name = "Briefcase"
+	add_child(loot)
+	pass
 	

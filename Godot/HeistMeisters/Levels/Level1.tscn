@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/TemplateLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/NPC/Camera.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Levels/Destinations2.gd" type="Script" id=7]
 [ext_resource path="res://Interface/Doors/Door.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Interface/Doors/LockedDoor.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Loot/Briefcase.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Computer/Computer.tscn" type="PackedScene" id=11]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -74,6 +75,11 @@ navpoly = SubResource( 1 )
 [node name="Camera2D" parent="Player" index="6"]
 current = true
 
+[node name="Loot" type="Node" parent="." index="6"]
+
+[node name="Briefcase" parent="Loot" index="0" instance=ExtResource( 10 )]
+position = Vector2( 1368, -355 )
+
 [node name="Camera" parent="Cameras" index="0" instance=ExtResource( 2 )]
 position = Vector2( 2009, -433 )
 rotation = 1.5708
@@ -111,7 +117,7 @@ position = Vector2( 417, 160 )
 [node name="LockedDoor" parent="Doors" index="1" instance=ExtResource( 9 )]
 position = Vector2( 97, 162 )
 
-[node name="Computer" parent="." index="9" instance=ExtResource( 11 )]
+[node name="Computer" parent="." index="10" instance=ExtResource( 11 )]
 position = Vector2( -137, 869 )
 rotation = 1.5708
 lock_group = "um"
