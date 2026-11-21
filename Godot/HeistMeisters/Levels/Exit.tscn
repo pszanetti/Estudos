@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Interface/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://Levels/Area2D.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64.5, 39.5 )
+
+[node name="Exit" type="ColorRect" groups=["Exit"]]
+visible = false
+margin_right = 130.0
+margin_bottom = 80.0
+color = Color( 0, 0.976471, 1, 0.588235 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -34.0
+margin_top = -13.5
+margin_right = 34.0
+margin_bottom = 13.5
+theme = ExtResource( 1 )
+text = "exit"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 65, 40 )
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -0.5, 0.5 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]

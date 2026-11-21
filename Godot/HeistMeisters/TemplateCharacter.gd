@@ -91,5 +91,6 @@ func collect_briefcase() -> void:
 	loot.set_name("Briefcase")
 	add_child(loot)
 	get_tree().call_group("Loot", "collect_loot")
+	get_tree().call_group("Exit", "show")
 	pass
 	
