@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 
 Global="*res://Global.gd"
 CombinationGenerator="*res://Interface/CombinationGenerator.gd"
+BackgroundMusic="*res://Interface/Music/BackgroundMusic.tscn"
 
 [display]
 
