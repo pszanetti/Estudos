@@ -58,10 +58,9 @@ text = "HEIST MEISTERS"
 align = 1
 
 [node name="Split0" type="HBoxContainer" parent="CenterContainer/Bakcground/VBoxContainer"]
-margin_left = 36.0
-margin_top = 100.0
-margin_right = 336.0
-margin_bottom = 120.0
+margin_top = 103.0
+margin_right = 376.0
+margin_bottom = 123.0
 rect_min_size = Vector2( 300, 20 )
 custom_constants/separation = 0
 

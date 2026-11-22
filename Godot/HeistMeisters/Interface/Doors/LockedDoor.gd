@@ -20,6 +20,7 @@ func _on_LockedDoor_body_entered(body: Node) -> void:
 	#	if body.name == "Player": ou
 #	Checa se a area de colisão é do Player
 #	print(body.collision_layer)
+	print(body.name)
 	if body.collision_layer == 1 or body.collision_layer == 16:
 		can_click = true
 	else:		# -> Permite que guardas passem sem o click ou senha

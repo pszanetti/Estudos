@@ -42,6 +42,7 @@ func enter(button) -> void:
 	guess.append(button)
 	update_display(guess)
 	
+# warning-ignore:shadowed_variable
 func update_display(guess) -> void:
 	display.text = PoolStringArray(guess).join("")
 	if guess.size() == combination.size():
