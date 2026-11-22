@@ -23,18 +23,20 @@ func close_if_empty() -> void:
 
 func _on_SimpleDoor_body_entered(body: Node) -> void:
 #	bodies_inside += 1
-	if body.collision_layer == 1:
-		can_click = true
-		last_player = body
-	else:		# -> guardas abrem sem click
-		open(body)
+	open(body)
+#	if body.collision_layer == 1:
+#		can_click = true
+#		last_player = body
+#	else:		# -> guardas abrem sem click
+#		open(body)
 
 func _on_SimpleDoor_body_exited(body: Node) -> void:
 #	bodies_inside = max(bodies_inside - 1, 0)
-	if body.collision_layer == 1:
-		can_click = false
-	if bodies_inside == 0:
-		close_if_empty()
+#	if body.collision_layer == 1:
+#		can_click = false
+#	if bodies_inside == 0:
+#		close_if_empty()
+	close_if_empty()
 
 
 func _on_SimpleDoor_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:

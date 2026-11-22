@@ -156,7 +156,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -4 )
-scale = Vector2( 2, 0.5 )
+scale = Vector2( 1, 0.5 )
 texture = ExtResource( 2 )
 offset = Vector2( 32, -1 )
 
@@ -178,7 +178,7 @@ anims/OpenDoorB = SubResource( 5 )
 anims/RESET = SubResource( 6 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-pitch_scale = 0.8
+volume_db = -20.0
 
 [connection signal="body_entered" from="." to="." method="_on_SimpleDoor_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_SimpleDoor_body_exited"]
