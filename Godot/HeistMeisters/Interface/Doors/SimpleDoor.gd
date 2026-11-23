@@ -5,10 +5,15 @@ var door_close = true
 var bodies_inside = 0
 var side = "A"   # lado para onde a porta abriu
 var last_player = null
+#
+#func _ready() -> void:
 
 func open(body: Node) -> void:
-	if not door_close:
+#	print("entrou: ", body.name, " | ", body.global_position)
+	if body is StaticBody2D:   # ignora a folha da porta e o resto do cenário estático
 		return
+#	if not door_close:
+#		returnclose_if_empty()
 	door_close = false
 	# em que lado da porta o corpo está (ajuste o eixo: .y se a porta é horizontal, .x se é vertical)
 	side = "A" if to_local(body.global_position).y > 0 else "B"
