@@ -2,15 +2,15 @@ extends Area2D
 
 var can_click: bool = false
 var doors_close = true
-
+export var card_name: String = "Blue"
 
 func _on_Door_body_entered(body: Node) -> void:
 #	if body.name == "Player": ou
 #	Checa se a area de colisão é do Player
-	print(body.collision_layer)
-	if body.collision_layer == 1:
+#	print(body.collision_layer == 1 and body.has_node(card_name))
+	if (body.collision_layer == 1 and body.has_node(card_name)):
 		can_click = true
-	else:		# -> Permite que guardas passem sem o click ou senha
+	elif body.collision_layer == 4:		# -> Permite que guardas passem sem o click ou senha
 		open()
 
 

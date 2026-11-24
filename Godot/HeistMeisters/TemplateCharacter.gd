@@ -93,4 +93,10 @@ func collect_briefcase() -> void:
 	get_tree().call_group("Loot", "collect_loot")
 	get_tree().call_group("Exit", "show")
 	pass
+
+func create_card(car_name):
+	var card = Node.new()
+	card.set_name(car_name)
+	add_child(card)
+	
 	

@@ -81,6 +81,7 @@ toggle_disguises={
 2d_physics/layer_3="NPC"
 2d_physics/layer_4="Computers"
 2d_physics/layer_5="Box"
+2d_physics/layer_6="AcessCard"
 
 [physics]
 
