@@ -28,13 +28,14 @@ var look_dir = 1
 func _ready() -> void:
 #	print(" Nova Versão ")
 	randomize()
+	yield(get_tree(), "physics_frame")
+	yield(get_tree(), "physics_frame")
+	print(avaliable_destinations)
 	possible_destinations = avaliable_destinations.get_children()
 
 	if possible_destinations.size() > 0:
 # Define o ponto de partida na ordem com base no offset do Inspector
 		current_index = start_offset % possible_destinations.size()
-	yield(get_tree(), "physics_frame")
-	yield(get_tree(), "physics_frame")
 	make_path()
 
 
